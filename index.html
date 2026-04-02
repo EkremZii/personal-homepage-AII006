@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ekrem Sumeraka | Homepage</title>
+  <meta name="description" content="Personal homepage of Ekrem Sumeraka with profile, interests and homework links.">
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --line: #dbe3ee;
+      --accent: #1f6feb;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      padding: 14px 0;
+    }
+    .header-inner a {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 12px;
+      background: #f9fbff;
+    }
+    .header-inner a:hover {
+      background: #eef4ff;
+    }
+    main {
+      padding: 34px 0 50px;
+    }
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .hero img {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      object-fit: cover;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    p {
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    h2 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #111827;
+    }
+    ul {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 22px 0 30px;
+      font-size: 0.95rem;
+    }
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero img {
+        max-width: 260px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="hw1.pdf" target="_blank" rel="noopener">hw1</a>
+      <a href="hw2.pdf" target="_blank" rel="noopener">hw2</a>
+      <a href="hw3.pdf" target="_blank" rel="noopener">hw3</a>
+      <a href="hw4.pdf" target="_blank" rel="noopener">hw4</a>
+      <a href="hw5.pdf" target="_blank" rel="noopener">hw5</a>
+      <a href="hw6.pdf" target="_blank" rel="noopener">hw6</a>
+      <a href="hw7.pdf" target="_blank" rel="noopener">hw7</a>
+      <a href="hw8.pdf" target="_blank" rel="noopener">hw8</a>
+      <a href="hw9.pdf" target="_blank" rel="noopener">hw9</a>
+      <a href="hw10.pdf" target="_blank" rel="noopener">hw10</a>
+    </div>
+  </header>
+  <main class="container">
+    <article class="hero">
+      <img src="./ekrem-portrait.png" alt="Portrait of Ekrem Sumeraka">
+      <div>
+        <h1>Ekrem Sumeraka</h1>
+        <p>I am a 4th year software engineering student who was a semi-pro football player in TRNC. I like sports, music and networking with new friends.</p>
+        <p>I have built applications such as a barber booking app for North Cyprus, and I am planning to open my own tech company soon.</p>
+        <p>My family has an aluminium business with over 15 years of history, and I have been working there for more than 5 years as director manager.</p>
+        <p><strong>Student Email:</strong> <a href="mailto:20220498@std.neu.edu.tr">20220498@std.neu.edu.tr</a></p>
+      </div>
+    </article>
+    <div class="grid">
+      <section>
+        <h2>Resume</h2>
+        <ul>
+          <li>4th year Software Engineering student</li>
+          <li>Director manager in family aluminium company (5+ years)</li>
+          <li>Founder-minded developer preparing a tech company launch</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Hobbies</h2>
+        <ul>
+          <li>Sports and active lifestyle</li>
+          <li>Music</li>
+          <li>Meeting and networking with new friends</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Professional Interests</h2>
+        <ul>
+          <li>Software product development</li>
+          <li>Startup and company building</li>
+          <li>Practical digital solutions for local markets</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Homework Files</h2>
+        <p>Upload your files as <strong>hw1.pdf</strong> to <strong>hw10.pdf</strong> in the same folder so each header link opens directly in the browser.</p>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2026 Ekrem Sumeraka. All rights reserved.</p>
+  </footer>
+</body>
+</html>
