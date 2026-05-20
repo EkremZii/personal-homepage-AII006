@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Analysis - Homework 8</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      margin: 24px;
+      color: #222;
+      background-color: #f5f5f5;
+      max-width: 900px;
+    }
+
+    h1, h2 {
+      color: #1a1a1a;
+    }
+
+    h2 {
+      margin-top: 32px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #333;
+    }
+
+    .site-label {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .appealing {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .unappealing {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+
+    dl {
+      margin: 0;
+    }
+
+    dt {
+      font-weight: bold;
+      margin-top: 14px;
+      color: #333;
+    }
+
+    dd {
+      margin: 6px 0 0 0;
+      padding-left: 0;
+    }
+
+    ul {
+      margin: 8px 0 0 18px;
+    }
+
+    a {
+      color: #0b57d0;
+      word-break: break-all;
+    }
+
+    .note {
+      background-color: #fff3cd;
+      border: 1px solid #ffc107;
+      padding: 12px 14px;
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Homework 8 — Website Comparison</h1>
+
+  <p class="note">
+    <strong>Submission reminder:</strong> Open each example site in your browser,
+    use Print → Save as PDF, and attach those PDFs with this assignment as required.
+  </p>
+
+  <p>
+    I chose one appealing site and one unappealing site, then answered questions (a)–(e)
+    for each, as required in Homework 8 Part 2.
+  </p>
+
+  <section>
+    <span class="site-label appealing">Appealing website</span>
+    <h2>MDN Web Docs</h2>
+
+    <dl>
+      <dt>a. What is the URL of the website?</dt>
+      <dd>
+        <a href="https://developer.mozilla.org/en-US/">https://developer.mozilla.org/en-US/</a>
+      </dd>
+
+      <dt>b. Does this page use tables? If so, for what purpose?</dt>
+      <dd>
+        The main page layout does <strong>not</strong> rely on HTML tables for design.
+        Content is structured with semantic elements (header, nav, main, sections, articles).
+        If tables appear elsewhere on MDN, they are used to present <strong>structured data</strong>
+        (for example comparison charts or property lists in documentation), not to lay out the whole page.
+      </dd>
+
+      <dt>c. Does this page use CSS? If so, for what purpose?</dt>
+      <dd>
+        Yes, extensively. CSS is used for:
+        <ul>
+          <li><strong>Page layout</strong> — responsive grid/flex sections, spacing, and alignment</li>
+          <li><strong>Text and color</strong> — typography, headings, links, and a consistent dark theme</li>
+          <li><strong>Another reason</strong> — accessibility (skip links, focus states) and visual hierarchy so featured articles stand out</li>
+        </ul>
+      </dd>
+
+      <dt>d. Is this page appealing or unappealing? List three reasons.</dt>
+      <dd>
+        <strong>Appealing.</strong>
+        <ul>
+          <li>Clear navigation and readable typography make it easy to find documentation.</li>
+          <li>Consistent colors and spacing create a professional, calm look.</li>
+          <li>Content is organized into logical sections (featured articles, news, contributions) instead of feeling cluttered.</li>
+        </ul>
+      </dd>
+
+      <dt>e. If unappealing, what would you do to improve it?</dt>
+      <dd>
+        Not applicable — this site is appealing. No major redesign is needed for this example.
+      </dd>
+    </dl>
+  </section>
+
+  <section>
+    <span class="site-label unappealing">Unappealing website</span>
+    <h2>Arngren — Hobby Electronics</h2>
+
+    <dl>
+      <dt>a. What is the URL of the website?</dt>
+      <dd>
+        <a href="http://www.arngren.net/">http://www.arngren.net/</a>
+      </dd>
+
+      <dt>b. Does this page use tables? If so, for what purpose?</dt>
+      <dd>
+        Yes. The homepage uses <strong>HTML tables heavily for page layout</strong>.
+        Product images and text are placed inside table cells in a dense grid, which was a common
+        old technique before modern CSS layout (flexbox/grid).
+      </dd>
+
+      <dt>c. Does this page use CSS? If so, for what purpose?</dt>
+      <dd>
+        Very little compared to modern sites. Most layout comes from tables and inline/old HTML styling.
+        There is minimal use of CSS for <strong>text and color configuration</strong> (basic fonts and link colors),
+        but not for a flexible, responsive page layout.
+      </dd>
+
+      <dt>d. Is this page appealing or unappealing? List three reasons.</dt>
+      <dd>
+        <strong>Unappealing.</strong>
+        <ul>
+          <li>The page feels crowded: many small images and links compete for attention with no clear focal point.</li>
+          <li>Visual hierarchy is weak — it is hard to tell what is most important on the page.</li>
+          <li>The design looks outdated (table-based layout, inconsistent image sizes), which hurts usability on today’s screens.</li>
+        </ul>
+      </dd>
+
+      <dt>e. If unappealing, what would you do to improve it?</dt>
+      <dd>
+        <ul>
+          <li>Replace table-based layout with CSS Grid or Flexbox and a simple header + product grid.</li>
+          <li>Use larger, consistent product thumbnails with clear titles, prices, and one primary “Shop” or category menu.</li>
+          <li>Add whitespace, a limited color palette, and mobile-friendly responsive rules so the site is readable on phones and tablets.</li>
+        </ul>
+      </dd>
+    </dl>
+  </section>
+
+  <p>
+    <a href="movie8.html">Part 1: Favorite Movie</a> |
+    <a href="index.html">Back to homepage</a>
+  </p>
+</body>
+</html>
