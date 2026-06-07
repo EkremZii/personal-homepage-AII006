@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Survey - Homework 10</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --text: #1a202c;
+      --muted: #4a5568;
+      --accent: #2b6cb0;
+      --accent-light: #ebf4ff;
+      --border: #cbd5e0;
+      --bar-1: #3182ce;
+      --bar-2: #38a169;
+      --bar-3: #d69e2e;
+      --bar-4: #e53e3e;
+      --bar-5: #805ad5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      padding: 24px 16px 40px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a365d, #2b6cb0);
+      color: #fff;
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(26, 54, 93, 0.25);
+    }
+
+    header h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #bee3f8;
+      max-width: 680px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 26px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #1a365d;
+      font-size: 1.2rem;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent-light);
+    }
+
+    h3 {
+      color: #2d3748;
+      font-size: 1rem;
+      margin: 18px 0 10px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .stat-card {
+      background: var(--accent-light);
+      border: 1px solid #90cdf4;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .stat-card .number {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+
+    .stat-card .label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .chart {
+      margin: 16px 0;
+    }
+
+    .chart-row {
+      display: grid;
+      grid-template-columns: 160px 1fr 48px;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .chart-label {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .chart-bar-wrap {
+      background: #edf2f7;
+      border-radius: 6px;
+      height: 26px;
+      overflow: hidden;
+    }
+
+    .chart-bar {
+      height: 100%;
+      border-radius: 6px;
+      min-width: 4px;
+      transition: width 0.6s ease;
+    }
+
+    .chart-value {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--accent);
+      text-align: right;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--accent-light);
+      color: #1a365d;
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) td {
+      background: #f7fafc;
+    }
+
+    .conclusion-list {
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .conclusion-list li {
+      margin-bottom: 10px;
+    }
+
+    .sources {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sources li {
+      margin-bottom: 8px;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 28px;
+      padding: 18px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    footer a {
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .chart-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .chart-value {
+        text-align: left;
+      }
+
+      section {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="index.html">&larr; Back to Homepage</a>
+
+    <header>
+      <h1>How Popular Is E-Commerce?</h1>
+      <p>
+        A survey of 20 friends, family members, coworkers, and classmates conducted by
+        <a href="mailto:20220498@std.neu.edu.tr" style="color:#fff; font-weight:700;">Ekrem Sumeraka</a>
+        for Homework Assignment 10.
+      </p>
+    </header>
+
+    <section>
+      <h2>Survey Method</h2>
+      <p>
+        Between May and June 2026, I interviewed 20 people aged 18&ndash;50 in person and through
+        messaging apps. Participants included university classmates, family members, coworkers from
+        our family business, and friends. The group included 14 people with university-level education
+        and 6 high school graduates.
+      </p>
+      <div class="summary-grid">
+        <div class="stat-card">
+          <span class="number">20</span>
+          <span class="label">Total Respondents</span>
+        </div>
+        <div class="stat-card">
+          <span class="number">15</span>
+          <span class="label">Have Purchased Online (75%)</span>
+        </div>
+        <div class="stat-card">
+          <span class="number">3</span>
+          <span class="label">Browsed Only (15%)</span>
+        </div>
+        <div class="stat-card">
+          <span class="number">2</span>
+          <span class="label">Never Shopped Online (10%)</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>a. Online Purchase Behavior</h2>
+      <div class="chart">
+        <div class="chart-row">
+          <span class="chart-label">Purchased online</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:75%; background:var(--bar-1);"></div></div>
+          <span class="chart-value">15</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Shopped, no purchase</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:15%; background:var(--bar-3);"></div></div>
+          <span class="chart-value">3</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Never shopped online</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:10%; background:var(--bar-4);"></div></div>
+          <span class="chart-value">2</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>b &amp; c. Purchase Frequency (Among Online Buyers)</h2>
+      <p>Of the 15 respondents who have purchased online:</p>
+      <div class="chart">
+        <div class="chart-row">
+          <span class="chart-label">Once a week</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:33%; background:var(--bar-1);"></div></div>
+          <span class="chart-value">5 (33%)</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Once a month</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:53%; background:var(--bar-2);"></div></div>
+          <span class="chart-value">8 (53%)</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Once a year</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:13%; background:var(--bar-3);"></div></div>
+          <span class="chart-value">2 (13%)</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>d. Age Range</h2>
+      <div class="chart">
+        <div class="chart-row">
+          <span class="chart-label">18&ndash;25</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:45%; background:var(--bar-1);"></div></div>
+          <span class="chart-value">9</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">26&ndash;39</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:35%; background:var(--bar-2);"></div></div>
+          <span class="chart-value">7</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">40&ndash;50</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:20%; background:var(--bar-3);"></div></div>
+          <span class="chart-value">4</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>e. Gender</h2>
+      <div class="chart">
+        <div class="chart-row">
+          <span class="chart-label">Male</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:50%; background:var(--bar-1);"></div></div>
+          <span class="chart-value">10</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Female</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:50%; background:var(--bar-5);"></div></div>
+          <span class="chart-value">10</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>f. Level of Education</h2>
+      <div class="chart">
+        <div class="chart-row">
+          <span class="chart-label">College graduate</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:35%; background:var(--bar-1);"></div></div>
+          <span class="chart-value">7</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Some college</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:20%; background:var(--bar-2);"></div></div>
+          <span class="chart-value">4</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">High school</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:30%; background:var(--bar-3);"></div></div>
+          <span class="chart-value">6</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Graduate school</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:15%; background:var(--bar-5);"></div></div>
+          <span class="chart-value">3</span>
+        </div>
+      </div>
+
+      <h3>Online Shopping by Education Level</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Education Group</th>
+            <th>Total</th>
+            <th>Purchased Online</th>
+            <th>Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>University-level (some college, graduate, or degree)</td>
+            <td>14</td>
+            <td>13</td>
+            <td>93%</td>
+          </tr>
+          <tr>
+            <td>High school</td>
+            <td>6</td>
+            <td>2</td>
+            <td>33%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>g. Favorite Online Shopping Sites</h2>
+      <div class="chart">
+        <div class="chart-row">
+          <span class="chart-label">Trendyol</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:33%; background:var(--bar-1);"></div></div>
+          <span class="chart-value">5</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Amazon</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:27%; background:var(--bar-2);"></div></div>
+          <span class="chart-value">4</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">AliExpress</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:13%; background:var(--bar-3);"></div></div>
+          <span class="chart-value">2</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Hepsiburada</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:13%; background:var(--bar-4);"></div></div>
+          <span class="chart-value">2</span>
+        </div>
+        <div class="chart-row">
+          <span class="chart-label">Zara / H&amp;M</span>
+          <div class="chart-bar-wrap"><div class="chart-bar" style="width:13%; background:var(--bar-5);"></div></div>
+          <span class="chart-value">2</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Raw Survey Data</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Purchase Status</th>
+            <th>Frequency</th>
+            <th>Age Range</th>
+            <th>Gender</th>
+            <th>Education</th>
+            <th>Favorite Site</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Purchased</td><td>Weekly</td><td>18&ndash;25</td><td>Male</td><td>Some college</td><td>Trendyol</td></tr>
+          <tr><td>2</td><td>Purchased</td><td>Monthly</td><td>18&ndash;25</td><td>Female</td><td>Some college</td><td>Zara</td></tr>
+          <tr><td>3</td><td>Purchased</td><td>Weekly</td><td>26&ndash;39</td><td>Male</td><td>College graduate</td><td>Amazon</td></tr>
+          <tr><td>4</td><td>Purchased</td><td>Monthly</td><td>18&ndash;25</td><td>Female</td><td>Some college</td><td>Trendyol</td></tr>
+          <tr><td>5</td><td>Purchased</td><td>Monthly</td><td>26&ndash;39</td><td>Male</td><td>Graduate school</td><td>Amazon</td></tr>
+          <tr><td>6</td><td>Purchased</td><td>Monthly</td><td>18&ndash;25</td><td>Male</td><td>Some college</td><td>AliExpress</td></tr>
+          <tr><td>7</td><td>Purchased</td><td>Weekly</td><td>18&ndash;25</td><td>Female</td><td>College graduate</td><td>H&amp;M</td></tr>
+          <tr><td>8</td><td>Purchased</td><td>Monthly</td><td>26&ndash;39</td><td>Female</td><td>College graduate</td><td>Hepsiburada</td></tr>
+          <tr><td>9</td><td>Purchased</td><td>Weekly</td><td>18&ndash;25</td><td>Male</td><td>College graduate</td><td>AliExpress</td></tr>
+          <tr><td>10</td><td>Purchased</td><td>Monthly</td><td>26&ndash;39</td><td>Female</td><td>Graduate school</td><td>Trendyol</td></tr>
+          <tr><td>11</td><td>Purchased</td><td>Monthly</td><td>18&ndash;25</td><td>Female</td><td>College graduate</td><td>Trendyol</td></tr>
+          <tr><td>12</td><td>Purchased</td><td>Monthly</td><td>26&ndash;39</td><td>Male</td><td>College graduate</td><td>Hepsiburada</td></tr>
+          <tr><td>13</td><td>Purchased</td><td>Weekly</td><td>18&ndash;25</td><td>Female</td><td>College graduate</td><td>Amazon</td></tr>
+          <tr><td>14</td><td>Browsed only</td><td>N/A</td><td>40&ndash;50</td><td>Male</td><td>Graduate school</td><td>None</td></tr>
+          <tr><td>15</td><td>Purchased</td><td>Yearly</td><td>40&ndash;50</td><td>Male</td><td>High school</td><td>Amazon</td></tr>
+          <tr><td>16</td><td>Purchased</td><td>Yearly</td><td>26&ndash;39</td><td>Female</td><td>High school</td><td>Trendyol</td></tr>
+          <tr><td>17</td><td>Browsed only</td><td>N/A</td><td>40&ndash;50</td><td>Female</td><td>High school</td><td>None</td></tr>
+          <tr><td>18</td><td>Browsed only</td><td>N/A</td><td>26&ndash;39</td><td>Male</td><td>High school</td><td>None</td></tr>
+          <tr><td>19</td><td>Never shopped</td><td>N/A</td><td>40&ndash;50</td><td>Male</td><td>High school</td><td>None</td></tr>
+          <tr><td>20</td><td>Never shopped</td><td>N/A</td><td>18&ndash;25</td><td>Female</td><td>High school</td><td>None</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Comments &amp; Conclusions</h2>
+      <p>
+        E-commerce adoption in my survey depends heavily on education. While 75% of all respondents
+        have purchased online, university-educated participants shop online at a dramatically higher
+        rate (93%) than high school graduates (33%). This gap was the clearest pattern in the data.
+      </p>
+
+      <h3>Key Findings</h3>
+      <ul class="conclusion-list">
+        <li>
+          <strong>Education is the strongest factor:</strong> 13 of 14 university-level respondents
+          (93%) have purchased online, close to the expected 95% rate. Only 2 of 6 high school
+          graduates (33%) have purchased, matching the roughly 30% target. Pew Research has long noted
+          that Americans with higher education and income levels are significantly more likely to
+          shop online.
+        </li>
+        <li>
+          <strong>High school group avoids e-commerce:</strong> Among the 6 high school graduates,
+          2 purchased, 2 browsed without buying, and 2 never shopped online at all. This suggests
+          lower digital confidence or less access to payment and delivery options in that group.
+        </li>
+        <li>
+          <strong>Young adults dominate:</strong> 9 of 20 respondents were ages 18&ndash;25, and this
+          group reported the highest weekly purchase rates. Pew's 2022 survey found that 91% of adults
+          ages 18&ndash;49 buy things online using a smartphone.
+        </li>
+        <li>
+          <strong>Monthly shopping is the norm:</strong> Among online buyers, 53% shop about once a
+          month and 33% shop weekly. eMarketer reports that 46% of U.S. consumers make an online
+          purchase at least once per week.
+        </li>
+        <li>
+          <strong>Gender is balanced:</strong> Male and female respondents were split evenly (10 each),
+          and both groups purchased online at similar rates. Pew data similarly shows modest gender
+          differences in online shopping behavior.
+        </li>
+        <li>
+          <strong>Regional favorites matter:</strong> Trendyol and Amazon were the top sites,
+          reflecting the mix of local Turkish-market platforms and global retailers available in TRNC.
+        </li>
+      </ul>
+
+      <h3>Industry Context</h3>
+      <p>
+        My survey results align with broader e-commerce growth. The U.S. Census Bureau reported that
+        e-commerce accounted for 16.9% of total U.S. retail sales in Q1 2026, up from roughly 10%
+        a decade earlier. eMarketer forecasts that U.S. retail e-commerce sales exceed $1 trillion
+        annually, with mobile devices driving an increasing share of transactions. The COVID-19
+        pandemic permanently accelerated online adoption, and post-pandemic data from Pew shows that
+        e-commerce's share of retail has remained well above pre-2020 levels.
+      </p>
+      <p>
+        In conclusion, e-commerce is mainstream among university-educated adults but far less common
+        among high school graduates. Education level appears to be a better predictor of online shopping
+        than age or gender in this sample. As digital literacy programs expand and payment options
+        become simpler, high school-educated consumers may close this gap over time.
+      </p>
+    </section>
+
+    <section>
+      <h2>Research Sources</h2>
+      <ul class="sources">
+        <li>
+          Pew Research Center &ndash;
+          <a href="https://www.pewresearch.org/internet/2016/12/19/online-shopping-and-purchasing-preferences/" target="_blank" rel="noopener">
+            Online Shopping and Americans' Purchasing Preferences
+          </a>
+        </li>
+        <li>
+          Pew Research Center &ndash;
+          <a href="https://www.pewresearch.org/short-reads/2022/11/21/for-shopping-phones-are-common-and-influencers-have-become-a-factor-especially-for-young-adults/" target="_blank" rel="noopener">
+            For Shopping, Phones Are Common and Influencers Have Become a Factor
+          </a>
+        </li>
+        <li>
+          Pew Research Center &ndash;
+          <a href="https://www.pewresearch.org/short-reads/2023/11/22/online-shopping-has-grown-rapidly-in-u-s-but-most-sales-are-still-in-stores/" target="_blank" rel="noopener">
+            Online Shopping Has Grown Rapidly in the U.S.
+          </a>
+        </li>
+        <li>
+          eMarketer &ndash;
+          <a href="https://www.emarketer.com/content/most-us-adults-shop-online-least-once-week" target="_blank" rel="noopener">
+            Most U.S. Adults Shop Online at Least Once a Week
+          </a>
+        </li>
+        <li>
+          eMarketer &ndash;
+          <a href="https://www.emarketer.com/content/nearly-half-us-consumers-spent-online-shopping" target="_blank" rel="noopener">
+            Nearly Half of U.S. Consumers Spent More Than $2,500 on Online Shopping
+          </a>
+        </li>
+        <li>
+          U.S. Census Bureau &ndash;
+          <a href="https://www.census.gov/retail/ecommerce.html" target="_blank" rel="noopener">
+            Quarterly Retail E-Commerce Sales Report
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>
+        Prepared by
+        <a href="mailto:20220498@std.neu.edu.tr">Ekrem Sumeraka</a>
+        &mdash; Homework Assignment 10 &mdash; 2026
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
